@@ -40,10 +40,12 @@ const Recipe = ({data}) => {
     const getTags = (data) => {
        
         if (!data.strTags) {
-            <p>No tags</p>
+            return (
+                <p>No tags</p>
+            )
         }
 
-        const tags = data.strTags ? data.strTags.split(",").join(", ").split(" ") : <p></p>
+        const tags = data.strTags.split(",").join(", ").split(" ");
         return tags.map(tag => {
             return (
                 <p>{tag}</p>
