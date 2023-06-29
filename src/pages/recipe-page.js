@@ -36,6 +36,8 @@ export default RecipePage;
 
 const Recipe = ({data}) => {
 
+    console.log(data)
+
     const getTags = (data) => {
        
         if (!data.strTags) {
@@ -47,7 +49,7 @@ const Recipe = ({data}) => {
         const tags = data.strTags.split(",").join(", ").split(" ");
         return tags.map(tag => {
             return (
-                <p>{tag}</p>
+                <p key={tag}>{tag}</p>
             )
         });
     }
@@ -61,15 +63,32 @@ const Recipe = ({data}) => {
         }
 
         const entries = Object.values(data).splice(9, 20);
+
+        console.log(Object.values(data))
+        console.log(entries)
         
         const ingredients = entries.map(ingr => {
-            return ingr ? <li>{ingr}</li> : null
+            return ingr ? <li key={ingr}>{ingr}</li> : null
         })
 
         return ingredients
     }
 
-    
+    const getMeasures = (data) => {
+        if (!data) {
+            return (
+                <p>No measures</p>
+            )
+        }
+
+    const entries = Object.values(data).splice(29, 20);
+    const measures = entries.map(measure => {
+        return measure ? <li key={measure}>{measure}</li> : null
+    })
+
+    return measures;
+
+    }
 
     return (
         <div fluid="md" className="margin-top">
@@ -86,17 +105,24 @@ const Recipe = ({data}) => {
                     </Col>
                 </Row>
             </div>
-            <Row className="mt-5">
+            <Row className="mt-3 back-colour">
                 <Col>
                     <div className="title-link-wrapper"><h2>Ingredients</h2></div>
-                    <ol>
-                        {getIngredients(data)}
-                    </ol>
+                    <Row >
+                        <Col md={3}>
+                            <ol>
+                                {getIngredients(data)}
+                            </ol>
+                        </Col>
+                        <Col >
+                            <ul>
+                                {getMeasures(data)}
+                            </ul>
+                        </Col>
+                    </Row>
                 </Col>
             </Row>
         </div>
 
     )
 }
-
-// test
