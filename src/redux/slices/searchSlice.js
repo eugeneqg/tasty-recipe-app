@@ -9,10 +9,13 @@ export const searchSlice = createSlice({
     initialState,
     reducers: {
         getResults: (state, action) => {
-            state.results = action.payload; 
+            state.results = action.payload;
+        },
+        clearResults: (state) => {
+            state.results = [];
         }
     }
 });
 
-export const {getResults} = searchSlice.actions;
+export const {getResults, clearResults} = searchSlice.actions;
 export default searchSlice.reducer;

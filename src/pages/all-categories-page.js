@@ -29,7 +29,7 @@ const AllCategoriesPage = () => {
     const categories = areLoaded ?
         categoriesData.map(cat => {
             return (
-            <NavLink style={{ textDecoration: 'none', color: "black" }} to={`/category-page/${cat.strCategory}`} className="d-flex justify-content-center align-items-center ">
+            <NavLink style={{ textDecoration: 'none', color: "black" }} to={`/category-page/c=${cat.strCategory}`} className="d-flex justify-content-center align-items-center ">
                 <div className="back-post d-flex align-items-center gap-3" key={cat.strCategory}>
                     <img src={cat.strCategoryThumb} alt={cat.strCategoryThumb}></img>
                     {cat.strCategory.toUpperCase()}

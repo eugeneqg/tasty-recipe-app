@@ -21,7 +21,7 @@ const CategoryPage = () => {
     const [pageNumbers, setPageNumbers] = React.useState();
 
     React.useEffect(() => {
-        GetData.getData(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${id}`)
+        GetData.getData(`https://www.themealdb.com/api/json/v1/1/filter.php?${id}`)
         .then(data => {
             dispatch(getCategory(data.meals));
             setTotalCount(data.meals.length + 1);
@@ -50,17 +50,10 @@ const CategoryPage = () => {
         }
     });
 
-    // const pagination = (num) => {
-    //     for (let i = 1; i <= num; i++) {
-    //         return (
-    //             <p>{i}</p>
-    //         )
-    //     }
-    // }
-
+    const categoryName = id.substring(2, id.length)
     return (
         <Container fluid="md" className="margin-top">
-                    <h2>Categories</h2>
+                    <h2>{categoryName}</h2>
                     <Row className="">
                         <Col md={12} className="category-grid">
                             {recipeList}

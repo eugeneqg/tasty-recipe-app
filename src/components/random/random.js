@@ -27,9 +27,9 @@ const RandomRecipe = () => {
     }, [dispatch]);
 
     const recipe = isLoaded ?
-        <Row >
+        <Row className="random-recipe">
             <Col md={5}>
-                <div className="random-pic-wrapper d-flex align-items-center mb-3">
+                <div className="random-pic-wrapper d-flex align-items-center">
                     <img src={randomRecipe.strMealThumb} alt={randomRecipe.strMeal} className="img-fluid"></img>
                 </div>
             </Col>

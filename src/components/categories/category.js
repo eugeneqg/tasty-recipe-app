@@ -5,7 +5,7 @@ const Category = ({cat}) => {
     
     return (
         <div className="category d-flex justify-content-center align-items-center img-fluid" key={cat.idCategory}>
-            <NavLink style={{ textDecoration: 'none', color: "white" }} to={`/category-page/${cat.strCategory}`} className="d-flex justify-content-center align-items-center category-name">
+            <NavLink style={{ textDecoration: 'none', color: "white" }} to={`/category-page/c=${cat.strCategory}`} className="d-flex justify-content-center align-items-center category-name">
                 {cat.strCategory.toUpperCase()}
             </NavLink>
             <img className="category-pic" src={cat.strCategoryThumb} alt={cat.strCategory}></img>

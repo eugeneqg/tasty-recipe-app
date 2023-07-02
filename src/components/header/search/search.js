@@ -6,6 +6,7 @@ import React from "react";
 import GetData from "../../../services/services";
 import { getResults } from "../../../redux/slices/searchSlice";
 import { useSelector, useDispatch } from "react-redux";
+// import { clear } from "../redux/slices/searchSlice";
 import { NavLink } from "react-router-dom";
 
 const Search = () => {
@@ -15,18 +16,19 @@ const Search = () => {
     const dispatch = useDispatch();
 
     const handler = (e) => {
-        setInput(e.target.value)
+        setInput(e.target.value);
     }
 
     React.useEffect(() => {
 
-        GetData.getData(`https://www.themealdb.com/api/json/v1/1/search.php?s=${input}`)
+        if (input) {
+            GetData.getData(`https://www.themealdb.com/api/json/v1/1/search.php?s=${input}`)
             .then(res => {
                 dispatch(getResults(res.meals))
             });
 
             input ? document.querySelector('.search-button').disabled = false : document.querySelector('.search-button').disabled = true;
-
+        }
 
     }, [input, dispatch]);
     
