@@ -1,24 +1,31 @@
+@import "../../../utilities/_variables"
+
 .brand
     font-weight: 900
     font-size: 20px
 
-    color: #FFFFFF
+    color: $green
+    text-decoration: none
+
+    transition: all ease-out 0.3s
+
+    &:hover
+        color: $dark-green
 
 .navlink
     font-weight: 400
     font-size: 16px
     text-decoration: none
 
-    color: #dddddd
+    color: $green
     transition: all ease-out 0.3s
     transform: scale(0.9)
 
     &:hover
-        color: #fff
+        color: $dark-green
         transform: scale(1)
 
 .absolute
     position: absolute
     top:0
     left: 0
-    background-color: rgba(0, 0, 0, 0.5)

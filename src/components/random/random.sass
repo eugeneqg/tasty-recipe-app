@@ -1,5 +1,10 @@
+@import "../../utilities/_variables"
+
+.random-back
+    background: $background
+    padding: 40px 0px 0px 0px
+    
 .random-recipe
-    background: white
     border-radius: 12px
     overflow: hidden
 
@@ -7,11 +12,17 @@
     max-height: 300px
     overflow: hidden
 
+    border-radius: 12px
+
+.text-content
+    flex-wrap: wrap
+    align-content: center
+
 .buttons
     width: 320px
-    padding: 20px
-    border-radius: 20px
-    background: #7ccf74
+    height: 64px
+    border-radius: 12px
+    background: $green
     border: none
     color: white
     transition: all ease 0.3s

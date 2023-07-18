@@ -30,15 +30,13 @@ const RandomRecipe = () => {
         <Row className="random-recipe">
             <Col md={5}>
                 <div className="random-pic-wrapper d-flex align-items-center">
-                    <img src={randomRecipe.strMealThumb} alt={randomRecipe.strMeal} className="img-fluid"></img>
+                    <img src={randomRecipe.strMealThumb} alt={randomRecipe.strMeal}></img>
                 </div>
             </Col>
-            <Col md={7} className="d-flex align-items-center">
-                <div className="text-content">
+            <Col md={7} className="d-flex text-content gap-2">
                     <h3 className="w-100">{randomRecipe.strMeal}</h3>
                     <p className="w-100 ">{randomRecipe.strInstructions ? randomRecipe.strInstructions.slice(0, 300) + "..." : "Loading"}</p>
                     <NavLink to={`/recipe-page/${randomRecipe.idMeal}`}><button className="buttons">Full recipe</button></NavLink>
-                </div>
             </Col>
         </Row> :
         <Row>
@@ -56,10 +54,13 @@ const RandomRecipe = () => {
         </Row>         
 
     return (
-        <Container fluid="md" className="mb-5">
-            <div className="title-link-wrapper"><h2 className="title-link">Let’s try something random!</h2></div>
-            {recipe}
-        </Container>
+        <div className="random-back margin">
+            <Container fluid="md" className="mb-5">
+                {/* <div className="title-link-wrapper"><h2 className="title-link">Let’s try something random!</h2></div> */}
+                <div className="text-center"><h2 className="title-link">LET'S TRY SOMETHING RANDOM!</h2></div>
+                {recipe}
+            </Container>
+        </div>
     )
 }
 

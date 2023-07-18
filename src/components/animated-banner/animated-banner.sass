@@ -1,0 +1,21 @@
+@import "../../utilities/_variables"
+
+@keyframes text 
+    0%
+        transform: translateX(0)
+    100% 
+        transform: translateX(-100%)
+
+.animation-wrapper
+    overflow: hidden
+    margin-bottom: 60px
+
+    &:hover .slides
+        animation-play-state: paused
+
+.tags
+    font-size: 32px
+    color: $green
+
+.slides
+    animation: 30s text infinite linear

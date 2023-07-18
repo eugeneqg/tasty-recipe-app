@@ -1,0 +1,7 @@
+.main {
+
+    display: flex;
+    flex-flow: column nowrap;
+    min-height: calc(100vh - 200px);
+
+}

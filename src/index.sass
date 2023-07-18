@@ -1,20 +1,29 @@
-body 
-    font-family: 'Hanuman', sans-serif
+@import "./utilities/_variables"
+
+*
+    box-sizing: border-box
     margin: 0px
-    background: rgba(217, 217, 217, 0.1)
+    
+body 
+    font-family: 'Montserrat', sans-serif
+    margin: 0px
+    background: white
 
 h1
-    font-family: 'Hanuman', sans-serif
-    font-weight: 400
+    font-family: 'Montserrat', sans-serif
+    font-weight: 600
     color: #FFFFFF
 
 h2
-    font-family: 'Hanuman', sans-serif
+    font-family: 'Montserrat', sans-serif
     font-style: normal
-    font-weight: 900
-    font-size: 28px
+    font-weight: 700
+    font-size: 20px
     margin-bottom: 20px
-    color: #242E20
+    color: $green
+
+.margin
+    margin-bottom: 80px
 
 .margin-top
     margin-top: 80px
@@ -39,11 +48,11 @@ h2
 
 @media screen and (min-width: 1200px) 
     h1
-        font-size: 48px
+        font-size: 32px
 
 @media screen and (min-width: 800px) and (max-width: 1199px)
     h1
-        font-size: 32px
+        font-size: 28px
 
 @media screen and (max-width: 640px)
     h1

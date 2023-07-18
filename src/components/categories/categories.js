@@ -41,8 +41,9 @@ const Categories = () => {
     });
 
     return (
-        <Container id="categories" className="mb-5" fluid="md">
-            <div className="title-link-wrapper"><NavLink className="title-link" to={"categories"}><h2>Categories</h2></NavLink></div>
+        <Container id="categories" className="margin" fluid="md">
+            {/* <h2 className="title-link-wrapper"></h2> */}
+            <div className="text-center"><NavLink className="title-link" to={"categories"}><h2>CATEGORIES</h2></NavLink></div>
             <Row>
                 <Col md={12} className="grid">
                     {categoryList}

@@ -8,7 +8,7 @@ const NavBar = () => {
     return (
             <Navbar className="absolute w-100" expand="lg">
                 <Container fluid="md">
-                    <Navbar.Brand className="brand"><NavLink style={{textDecoration: "none", color: "white"}} to="/">tasty</NavLink></Navbar.Brand>
+                    <Navbar.Brand><NavLink  className="brand" to="/">tasty</NavLink></Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                         <Nav>
