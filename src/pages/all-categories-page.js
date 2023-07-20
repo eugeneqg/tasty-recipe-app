@@ -43,7 +43,7 @@ const AllCategoriesPage = () => {
 
         <Container fluid="md" className="margin-top">
                     <h2>All Categories</h2>
-                    <Row className="">
+                    <Row className="margin">
                         <Col md={12} className="category-grid">
                             {categories}
                         </Col>

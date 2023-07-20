@@ -42,7 +42,6 @@ const Categories = () => {
 
     return (
         <Container id="categories" className="margin" fluid="md">
-            {/* <h2 className="title-link-wrapper"></h2> */}
             <div className="text-center"><NavLink className="title-link" to={"categories"}><h2>CATEGORIES</h2></NavLink></div>
             <Row>
                 <Col md={12} className="grid">
