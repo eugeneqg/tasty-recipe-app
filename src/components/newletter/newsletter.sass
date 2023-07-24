@@ -31,12 +31,18 @@
 
 .newsletter-button
     border-radius: 12px
-    background: rgba(165, 255, 157, 0.6)
+    background: $green
     backdrop-filter: blur(20px)
     border: none
     color: white
     width: 100%
     height: 64px
+    transform: scale(1)
+    transition: all 0.2s ease-in
+
+    &:hover:enabled
+        
+        transform: scale(1.1)
 
     &:disabled
         background: grey

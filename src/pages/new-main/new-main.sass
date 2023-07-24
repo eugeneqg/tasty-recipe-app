@@ -2,19 +2,33 @@
 
 @media screen and (min-width: 1200px)
     .new-main
-        position: relative
         display: flex
         align-items: center
+        justify-content: center
         background: $background
         width: 100%
+        min-height: 800px
         height: 100vh
-
+        max-height: 920px
         overflow: hidden
+
+    .main-wrapper
+        position: relative
+        width: 1200px
+        min-height: 800px
+        height: 100vh
+        max-height: 920px
+
+    .main-banner
+        display: flex
+        height: 100%
+        flex-wrap: wrap
+        align-content: center
 
     .ellipse
         position: absolute
-        right: -200px
-        top: -63px
+        right: -320px
+        top: 52px
         width: 680px
         height: 680px
         border-radius: 100%
@@ -48,11 +62,6 @@
         background-size: cover
         background-position: center
         border: solid 12px $background
-
-    .main-banner
-        display: flex
-        flex-wrap: wrap
-        align-content: center
     
     .broccoli
         position: absolute

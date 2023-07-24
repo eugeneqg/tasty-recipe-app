@@ -26,7 +26,6 @@ const CategoryPage = () => {
     React.useEffect(() => {
         GetData.getData(`https://www.themealdb.com/api/json/v1/1/filter.php?${id}`)
         .then(data => {
-            setTotalCount(data.meals.length);
             dispatch(getCategory(data.meals));
             setTotalCount(data.meals.length + 1);
             setIsLoaded(true);
@@ -47,7 +46,6 @@ const CategoryPage = () => {
             )
         } else {
             return (
-                // <LoadingCategory cat={cat} loader={loader}/> 
                 <img src={loader} alt="loading"></img>
             )
         }

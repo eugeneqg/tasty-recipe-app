@@ -9,6 +9,7 @@ import "./main-search.sass";
 const MainSearch = () => {
 
     const [input, setInput] = React.useState("");
+    const [isActive, setIsActive] = React.useState(false);
 
     const dispatch = useDispatch();
 
@@ -23,11 +24,14 @@ const MainSearch = () => {
             .then(res => {
                 dispatch(getResults(res.meals))
             });
-
-            input ? document.querySelector('.search-button').disabled = false : document.querySelector('.search-button').disabled = true;
         }
+        
 
-    }, [input, dispatch]);
+        input ? setIsActive(true) : setIsActive(false);
+
+        isActive ? document.querySelector('.search-button').disabled = false : document.querySelector('.search-button').disabled = true;
+
+    }, [isActive, input, dispatch]);
 
     return (
         <Row className="w-100 d-flex gap-2">

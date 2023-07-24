@@ -13,6 +13,9 @@ const NavBar = () => {
                     <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                         <Nav>
                             <Nav.Item>
+                                <Nav.Link className="navlink"><NavLink className="navlink" to={"/favourite"}>Favorite</NavLink></Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
                                 <Nav.Link className="navlink"><NavLink className="navlink" to={"/categories"}>Categories</NavLink></Nav.Link>
                             </Nav.Item>
                             <Nav.Item>

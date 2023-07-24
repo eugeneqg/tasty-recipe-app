@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import React from "react";
 import GetData from "../services/services";
 import { NavLink } from "react-router-dom";
+import { Star } from 'react-bootstrap-icons';
+import loader from "../public/img/loader.svg";
 import "./recipe-page.sass";
 
 const RecipePage = () => {
@@ -23,10 +25,10 @@ const RecipePage = () => {
         });
     }, [isLoaded]);
 
-    const data = isLoaded ? <Recipe data={recipe}/> : <p>loading</p>
+    const data = isLoaded ? <Recipe data={recipe} /> : <img src={loader} alt="loading"></img>
 
     return (
-        <Container>
+        <Container fluid="md" className="margin-top">
             {data}
         </Container>
     )
@@ -37,7 +39,20 @@ export default RecipePage;
 
 const Recipe = ({data}) => {
 
-    console.log(data)
+    const [fav, setFav] = React.useState(false);
+
+    const items = Object.keys({...localStorage});
+
+    const saveToLocal = (data) => {
+        const recipe = {idMeal: data.idMeal, strMealThumb: data.strMealThumb, strMeal: data.strMeal};
+        localStorage.setItem(data.idMeal, JSON.stringify(recipe));
+        setFav(true);
+    }
+
+    const removeFromLocal = (data) => {
+        localStorage.removeItem(data.idMeal);
+        setFav(false);
+    }
 
     const getTags = (data) => {
        
@@ -103,18 +118,39 @@ const Recipe = ({data}) => {
 
     }
 
+    const changeButtons = () => {
+        if (items.includes(data.idMeal)) {
+            return(
+                <button onClick={() => removeFromLocal(data)} className="fav-btn-active"><Star color="white"/> Remove from favoutites</button>
+            )
+        } else {
+            return (
+                <button onClick={() => saveToLocal(data)} className="fav-btn"><Star/> Add to favoutites</button>
+            )
+        }
+    }
+
+    React.useEffect(() => {
+
+        items.includes(data.idMeal) ? setFav(true) : setFav(false);
+
+    }, [items, fav]);
+
     return (
-        <div fluid="md" className="margin-top">
-            <div style={{"background": `url(${data.strMealThumb}) no-repeat center center fixed`, "backgroundSize": "cover"}} className="recipe-page-wrapper">
+        <div>
+            <div style={{"backgroundImage": `url(${data.strMealThumb})`}} className="recipe-page-wrapper">
                 <Row className="blur d-flex flex-wrap justify-content-center">
                     <Col md={3} className="col text-center">
                         <img className="recipe-page-img" src={data.strMealThumb} alt={data.strMeal}></img>
                     </Col>
-                    <Col md={9} className="m-0">
+                    <Col md={6} className="m-0">
                         <h1 className="recipe-name mb-3">{data.strMeal}</h1>
                         <p><NavLink className="tag-link" to={`/category-page/c=${data.strCategory}`}>{data.strCategory}</NavLink></p>
                         <p><NavLink className="tag-link" to={`/category-page/a=${data.strArea}`}>{data.strArea}</NavLink></p>
                         <div className="d-flex gap-1">Tags: {getTags(data)}</div>
+                    </Col>
+                    <Col md={3}>
+                        {changeButtons()}
                     </Col>
                 </Row>
             </div>

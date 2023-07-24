@@ -9,6 +9,6 @@ export const store = configureStore({
         categories: categoriesSlice,
         category: categorySlice,
         search: searchSlice,
-        random: randomSlice
+        random: randomSlice,
     }
 });
