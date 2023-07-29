@@ -1,11 +1,11 @@
 import React from "react";
-import Categories from "../components/categories/categories";
-import RandomRecipe from "../components/random/random";
-import About from "../components/about/about";
-import AnimatedBanner from "../components/animated-banner/animated-banner";
-import Newsletter from "../components/newletter/newsletter";
-import NewMain from "./new-main/new-main";
-import Modal from "../components/modal/modal"
+import Categories from "../../components/categories/categories";
+import RandomRecipe from "../../components/random/random";
+import About from "../../components/about/about";
+import AnimatedBanner from "../../components/animated-banner/animated-banner";
+import Newsletter from "../../components/newletter/newsletter";
+import Main from "../../components/main/main";
+import Modal from "../../components/modal/modal"
 
 const MainPage = () => {
 
@@ -23,7 +23,7 @@ const MainPage = () => {
     return (
         <>
             {isOpen ? <Modal setIsOpen={setIsOpen} /> : null}
-            <NewMain/>
+            <Main/>
             <AnimatedBanner/>
             <About/>
             <Categories/>

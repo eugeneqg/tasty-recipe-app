@@ -1,15 +1,15 @@
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getCategory } from "../redux/slices/categorySlice";
+import { getCategory } from "../../redux/slices/categorySlice";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import React from "react";
-import GetData from "../services/services";
-import RecipeCard from "../components/recipe-card/recipe-card";
-import loader from "../public/img/loader.svg";
+import GetData from "../../services/services";
+import RecipeCard from "../../components/recipe-card/recipe-card";
+import loader from "../../public/img/loader.svg";
 import "./category-page.sass"; 
-import Pagination from "../components/pagination/pagination";
+import Pagination from "../../components/pagination/pagination";
 
 const CategoryPage = () => {
 

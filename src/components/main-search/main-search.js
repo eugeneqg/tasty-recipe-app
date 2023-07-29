@@ -2,7 +2,7 @@ import { Row, Col } from "react-bootstrap";
 import React from "react";
 import GetData from "../../services/services";
 import { getResults } from "../../redux/slices/searchSlice";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import "./main-search.sass";
 
@@ -34,13 +34,13 @@ const MainSearch = () => {
     }, [isActive, input, dispatch]);
 
     return (
-        <Row className="w-100 d-flex gap-2">
-            <Col xs={6}>
+        <Row className="w-100 d-flex main-search">
+            <Col sm={8} xl={6}>
                 <form id="search-form">
                     <input className="search-input ps-3" onChange={handler} type="text" placeholder="What do you want eat today?"></input>
                 </form>
             </Col>
-            <Col xs={2}>
+            <Col sm={4} xl={2}>
                 <NavLink to={"search"}><button className="search-button" form="search-form" type="submit" disabled>Search</button></NavLink>
             </Col>
         </Row>

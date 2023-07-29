@@ -2,9 +2,10 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import GetData from "../services/services";
+import GetData from "../../services/services";
 import { NavLink } from "react-router-dom";
-import loader from "../public/img/loader.svg";
+import "./all-categories-page.sass";
+import loader from "../../public/img/loader.svg";
 
 const AllCategoriesPage = () => {
 
@@ -31,13 +32,15 @@ const AllCategoriesPage = () => {
             return (
             <NavLink style={{ textDecoration: 'none', color: "black" }} to={`/category-page/c=${cat.strCategory}`} className="d-flex justify-content-center align-items-center ">
                 <div className="back-post d-flex align-items-center gap-3" key={cat.strCategory}>
-                    <img src={cat.strCategoryThumb} alt={cat.strCategoryThumb}></img>
+                    <div className="img-wrapper">
+                        <img src={cat.strCategoryThumb} alt={cat.strCategoryThumb}></img>
+                    </div>
                     {cat.strCategory.toUpperCase()}
                 </div>
             </NavLink>
             )
         }) :
-        <img src={loader} alt="loading"></img>
+            <div className="d-flex w-100 vh-100 justify-content-center align-items-center"><img  src={loader} alt="loading"></img></div>
 
     return (
 

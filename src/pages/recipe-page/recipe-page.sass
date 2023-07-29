@@ -1,4 +1,4 @@
-@import "../utilities/_variables"
+@import "../../utilities/_variables"
 
 .recipe-page-wrapper
     background-repeat: no-repeat
@@ -9,7 +9,7 @@
     display: flex
     align-items: center
     width: 100%
-    height: 300px
+    height: fit-content
     overflow: hidden
     border-radius: 12px
 
@@ -23,15 +23,13 @@
     margin: 0px
     backdrop-filter: blur(20px)
 
-    background-color: rgba(255, 255, 255, 0.4)
-
+    background-color: rgba(255, 255, 255, 0.6)
 
 .col
     height: 100%
 
-
 .recipe-page-img
-    height: 100%
+    width: 100%
     border-radius: 12px
 
 .recipe-name
@@ -86,3 +84,16 @@
         background: #ffbd03
         color: white
         border: solid 2px white
+
+@media screen and (min-width: 800px)
+    .video
+        width: 100%
+        height: 500px
+
+@media screen and (max-width: 800px)
+    .video
+        width: 100%
+        height: 240px
+
+    .recipe-info
+        gap: 20px

@@ -1,13 +1,12 @@
 import Container from "react-bootstrap/Container";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 import { useParams } from "react-router-dom";
 import React from "react";
-import GetData from "../services/services";
-import { NavLink } from "react-router-dom";
+import GetData from "../../services/services";
 import { Star } from 'react-bootstrap-icons';
-import loader from "../public/img/loader.svg";
+import loader from "../../public/img/loader.svg";
 import "./recipe-page.sass";
+import RecipePageInfo from "../../components/recipe-page-info/recipe-page-info";
+import RecipePageInstruction from "../../components/recipe-page-instr/recipe-page-instr";
 
 const RecipePage = () => {
     const {id} = useParams();
@@ -23,9 +22,10 @@ const RecipePage = () => {
         .catch(e => {
             throw new Error(`Couldn't fetch recipe data (${e})`)
         });
-    }, [isLoaded]);
 
-    const data = isLoaded ? <Recipe data={recipe} /> : <img src={loader} alt="loading"></img>
+    }, [isLoaded, id]);
+
+    const data = isLoaded ? <Recipe data={recipe} /> : <div className="d-flex w-100 vh-100 justify-content-center align-items-center"><img  src={loader} alt="loading"></img></div>
 
     return (
         <Container fluid="md" className="margin-top">
@@ -104,11 +104,10 @@ const Recipe = ({data}) => {
     }
 
     const getYoutubeVideo = (data) => {
-        console.log(data)
         if (data && data !== " " && data !== null) {
             const youtubeLink = data.substring(0, 24) + "embed/" + data.substring(32, data.length);
             return(
-                <iframe src={youtubeLink} width="750" height="500" controls></iframe>
+                <iframe title="video" className="video" src={youtubeLink} controls></iframe>
             )
         } else {
             return (
@@ -134,53 +133,12 @@ const Recipe = ({data}) => {
 
         items.includes(data.idMeal) ? setFav(true) : setFav(false);
 
-    }, [items, fav]);
+    }, [items, fav, data.idMeal]);
 
     return (
         <div>
-            <div style={{"backgroundImage": `url(${data.strMealThumb})`}} className="recipe-page-wrapper">
-                <Row className="blur d-flex flex-wrap justify-content-center">
-                    <Col md={3} className="col text-center">
-                        <img className="recipe-page-img" src={data.strMealThumb} alt={data.strMeal}></img>
-                    </Col>
-                    <Col md={6} className="m-0">
-                        <h1 className="recipe-name mb-3">{data.strMeal}</h1>
-                        <p><NavLink className="tag-link" to={`/category-page/c=${data.strCategory}`}>{data.strCategory}</NavLink></p>
-                        <p><NavLink className="tag-link" to={`/category-page/a=${data.strArea}`}>{data.strArea}</NavLink></p>
-                        <div className="d-flex gap-1">Tags: {getTags(data)}</div>
-                    </Col>
-                    <Col md={3}>
-                        {changeButtons()}
-                    </Col>
-                </Row>
-            </div>
-            <Row className="mt-3 back-colour mb-5">
-                <Col>
-                    <div className="title-link-wrapper"><h2>Ingredients</h2></div>
-                    <Row>
-                        <Col xs={6} md={4}>
-                            <ol>
-                                {getIngredients(data)}
-                            </ol>
-                        </Col>
-                        <Col xs={6} md={8}>
-                            <ul>
-                                {getMeasures(data)}
-                            </ul>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <div className="title-link-wrapper"><h2>Instructions</h2></div>
-                            <p>{data.strInstructions}</p>
-                        </Col>
-                    </Row>
-                    <div className="title-link-wrapper"><h2>Video</h2></div>
-                    <Row d-flex>
-                        <Col md={6}>{getYoutubeVideo(data.strYoutube)}</Col>
-                    </Row>
-                </Col>
-            </Row>
+            <RecipePageInfo data={data} getTags={getTags} changeButtons={changeButtons} />
+            <RecipePageInstruction data={data} getIngredients={getIngredients} getMeasures={getMeasures} getYoutubeVideo={getYoutubeVideo} />
         </div>
 
     )

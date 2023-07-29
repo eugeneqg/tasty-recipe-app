@@ -9,7 +9,6 @@
 
     border: 1px solid white
     border-radius: 12px
-    text-align: center
     cursor: pointer
     transition: all 0.35s
     display: flex
@@ -18,9 +17,19 @@
     font-weight: bolder
     color: $dark-green
 
-    img
+    p
+        width: 50%
+        margin: 0px
+
+    .recipe-wrapper
         height: 100%
+        width: 200px
         border-radius: 12px 0px 0px 12px
+        overflow: hidden
+
+        img
+            height: 100%
+            width: 200px
 
     &:hover
         box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22)

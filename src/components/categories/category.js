@@ -20,7 +20,7 @@ const LoadingCategory = ({cat, loader}) => {
             <div className="d-flex justify-content-center align-items-center category-name">
                 <p>{cat.strCategory.toUpperCase()}</p>
             </div>
-            <img className="loader" src={loader} alt={cat.strCategory}></img>
+            <img className="loader" loading="lazy" src={loader} alt={cat.strCategory}></img>
         </div>
     )
 }

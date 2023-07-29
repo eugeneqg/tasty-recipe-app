@@ -1,17 +1,14 @@
 import { useSelector } from "react-redux";
 import Container from "react-bootstrap/Container";
-import RecipeCard from "../components/recipe-card/recipe-card";
+import RecipeCard from "../../components/recipe-card/recipe-card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { clearResults } from "../redux/slices/searchSlice";
-import { NavLink } from "react-router-dom";
-import GetData from "../services/services";
-import { getResults } from "../redux/slices/searchSlice";
+import GetData from "../../services/services";
+import { getResults } from "../../redux/slices/searchSlice";
 import "./search-page.sass";
-import loader from "../public/img/loader.svg"
-import Pagination from "../components/pagination/pagination";
+import Pagination from "../../components/pagination/pagination";
 
 const SearchPage = () => {
     const searchResults = useSelector(state => state.search.results);
@@ -29,18 +26,16 @@ const SearchPage = () => {
 
     const recipeList = searchResults !== null ?
     searchResults.slice(indexOfFirstPost, indexOfLastPost).map(recipe => {
-
             return (
                 <RecipeCard key={recipe.isMeal} id={recipe.idMeal} recipe={recipe}/>
             )}) :
-                // <img src={loader} alt="loading"></img>
                 <p>No results</p>
 
     React.useEffect(() => {
         if (input) {
             GetData.getData(`https://www.themealdb.com/api/json/v1/1/search.php?s=${input}`)
             .then(res => {
-                setTotalCount(res?.meals.length + 1);
+                setTotalCount(res.meals?.length + 1);
                 dispatch(getResults(res.meals))
             });
         }

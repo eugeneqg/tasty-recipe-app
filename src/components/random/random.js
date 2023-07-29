@@ -1,11 +1,9 @@
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import GetData from "../../services/services";
 import React from "react";
-import { NavLink } from "react-router-dom";
 import {useSelector, useDispatch} from "react-redux";
 import { getRandomRecipe } from "../../redux/slices/randomSlice";
+import { Loaded, NotLoaded } from "./loaded/isLoaded";
 import loader from "../../public/img/loader.svg";
 import "./random.sass";
 
@@ -26,37 +24,11 @@ const RandomRecipe = () => {
             })
     }, [dispatch]);
 
-    const recipe = isLoaded ?
-        <Row className="random-recipe">
-            <Col md={5}>
-                <div className="random-pic-wrapper d-flex align-items-center">
-                    <img src={randomRecipe.strMealThumb} alt={randomRecipe.strMeal}></img>
-                </div>
-            </Col>
-            <Col md={7} className="d-flex text-content gap-2">
-                    <h3 className="w-100">{randomRecipe.strMeal}</h3>
-                    <p className="w-100 ">{randomRecipe.strInstructions ? randomRecipe.strInstructions.slice(0, 300) + "..." : "Loading"}</p>
-                    <NavLink to={`/recipe-page/${randomRecipe.idMeal}`}><button className="buttons">Full recipe</button></NavLink>
-            </Col>
-        </Row> :
-        <Row>
-            <Col md={5}>
-                <div className="random-pic-wrapper d-flex align-items-center justify-content-center">
-                    <img src={loader} alt={randomRecipe.strMeal} className="img-fluid"></img>
-                </div>
-            </Col>
-            <Col md={7} className="d-flex align-items-center">
-                <div className="text-content">
-                    <h3 className="w-100">{randomRecipe.strMeal}</h3>
-                    <p className="w-100 ">{randomRecipe.strInstructions ? randomRecipe.strInstructions.slice(0, 300) + "..." : "Loading"}</p>
-                </div>
-            </Col>
-        </Row>         
+    const recipe = isLoaded ? <Loaded data={randomRecipe}/> : <NotLoaded data={randomRecipe} loader={loader} />        
 
     return (
         <div className="random-back margin">
             <Container fluid="md" className="mb-5">
-                {/* <div className="title-link-wrapper"><h2 className="title-link">Let’s try something random!</h2></div> */}
                 <div className="text-center"><h2 className="title-link">LET'S TRY SOMETHING RANDOM!</h2></div>
                 {recipe}
             </Container>
